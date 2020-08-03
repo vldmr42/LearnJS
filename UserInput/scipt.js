@@ -21,14 +21,29 @@ let appData = {
 
 console.log(appData);
 
-let exp1 = prompt('Enter your expenses item 1', '');
-let exp1_value = +prompt('How much does it cost', '');
-let exp2 = prompt('Enter your expenses item 2', '');
-let exp2_value = +prompt('How much does it cost', '');
+for (let i = 0; i < 2; i++) {
+    let exp = prompt('Enter your expenses item ' + i, ''),
+        exp_value = +prompt('How much does it cost', '');
 
-appData.expenses[exp1] = exp1_value;
-appData.expenses[exp2] = exp2_value;
+    if ((typeof (exp)) === 'string' && (typeof (exp) != null) && typeof (exp_value) != null &&
+        exp != '' && exp_value != '' && exp.length < 50) {
+        console.log('done')
+        appData.expenses[exp] = exp_value;
+    } else {
+        console.log('...')
+    }
+};
 
-let dailyBudget = (money - (exp1_value + exp2_value)) / 30;
+appData.moneyPerDay = appData.budget / 30;
 
-alert('Your daily budget is ' + dailyBudget)
+alert('Your daily budget is ' + appData.moneyPerDay);
+
+if (appData.moneyPerDay < 100) {
+    console.log('Bum')
+} else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+    console.log('Average money');
+} else if (appData.moneyPerDay > 2000) {
+    console.log('Rich mf');
+} else {
+    console.log('WTF');
+}
