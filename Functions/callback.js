@@ -1,5 +1,5 @@
 function first() {
-    setTimeout( function(){
+    setTimeout(function () {
         console.log(1);
     }, 500);
 }
@@ -12,7 +12,7 @@ first();
 second();
 
 function learnJS(lang, callback) {
-    console.log('I am lerning ' + lang);
+    console.log('I am learning ' + lang);
     callback();
 }
 
