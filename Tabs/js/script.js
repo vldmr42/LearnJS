@@ -64,9 +64,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
         function updateClock() {
             let t = getTimeReamaining(endTime);
-            hours.textContent = t.hours;
-            minutes.textContent = t.minutes;
-            seconds.textContent = t.seconds;
+            hours.textContent = t.hours.toString().padStart(2, '0');
+            minutes.textContent = t.minutes.toString().padStart(2, '0');
+            seconds.textContent = t.seconds.toString().padStart(2, '0');
 
             if (t.total <= 0) {
                 clearInterval(timeInterval);
