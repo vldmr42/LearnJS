@@ -127,3 +127,36 @@ var arr = makeArray();
 arr[1]();
 arr[5]();
 arr[9]();
+
+let fun = () => {
+    console.log(this);
+};
+
+// fun();
+
+let obj = {
+    number: 5,
+    sayNumber: function () {
+        let say = () => {
+            console.log(this);
+        };
+        say();
+    }
+};
+
+obj.sayNumber();
+
+let btn = document.querySelector('button');
+
+btn.addEventListener('click', function () {
+    let show = () => {
+        console.log(this);
+    };
+    show();
+});
+
+function calcOrDouble(number, basis = 2) {
+    // basis = basis || 2;
+    console.log(number * basis);
+}
+calcOrDouble(3, 5);
