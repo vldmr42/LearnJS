@@ -155,8 +155,43 @@ btn.addEventListener('click', function () {
     show();
 });
 
+// Default arguments
 function calcOrDouble(number, basis = 2) {
     // basis = basis || 2;
     console.log(number * basis);
 }
 calcOrDouble(3, 5);
+
+// Classes
+class Rectangle {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
+    }
+    calcArea() {
+        return this.height * this.width;
+    }
+}
+
+const square = new Rectangle(10, 10);
+
+console.log(square)
+console.log(square.calcArea());
+
+// spread
+
+let video = ['youtube', 'vimeo', 'rutube'],
+    blogs = ['wordpress', 'livejornal', 'blogger'],
+    internet = [...video, ...blogs, 'vk', 'facebook'];
+
+console.log(internet);
+
+function log(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+
+let numbers = [2, 5, 7];
+
+log(...numbers);
