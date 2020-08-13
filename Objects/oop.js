@@ -110,3 +110,20 @@ let name = 'Ivan',
     mail = 'example@mail.com';
 
 document.write(`User ${name} ${age} years old`);
+
+function makeArray() {
+    var items = [];
+
+    for (let i = 0; i < 10; i++) {
+        var item = function () {
+            console.log(i);
+        };
+        items.push(item);
+    }
+    return items;
+}
+
+var arr = makeArray();
+arr[1]();
+arr[5]();
+arr[9]();
