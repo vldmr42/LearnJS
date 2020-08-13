@@ -11,7 +11,7 @@
 //     console.log('Attr ' + key + ' has value ' + options[key]);
 // }
 
-let arr = [1, 2, 3, 4, 5];
+// let arr = [1, 2, 3, 4, 5];
 
 // for (let i = 0; i < arr.length; i++) {
 //     console.log(arr[i]);
@@ -25,12 +25,12 @@ let arr = [1, 2, 3, 4, 5];
 //     console.log(key);
 // }
 
-let sArr = [1, 15, 4],
-    i = sArr.sort(compareNum);
+// let sArr = [1, 15, 4],
+//     i = sArr.sort(compareNum);
 
-function compareNum(a, b) {
-    return a - b;
-}
+// function compareNum(a, b) {
+//     return a - b;
+// }
 
-console.log(sArr);
-console.log(i);
+// console.log(sArr);
+// console.log(i);

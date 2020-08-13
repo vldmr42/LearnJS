@@ -93,14 +93,20 @@ john.__proto__ = soldier;
 // console.log(double(3));
 // console.log(double(5));
 
-let btn = document.querySelector('button');
+// let btn = document.querySelector('button');
 
-btn.addEventListener('click', function () {
-    console.log(this);
-    this.style.backgroundColor = 'red';
+// btn.addEventListener('click', function () {
+//     console.log(this);
+//     this.style.backgroundColor = 'red';
 
-    function showThis() {
-        console.log(this);
-    }
-    showThis();
-});
+//     function showThis() {
+//         console.log(this);
+//     }
+//     showThis();
+// });
+
+let name = 'Ivan',
+    age = 30,
+    mail = 'example@mail.com';
+
+document.write(`User ${name} ${age} years old`);
