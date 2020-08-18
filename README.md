@@ -17,4 +17,3 @@
 - [ ] Slider
 - [ ] Timer
 - [ ] Realtime input fields update
-    - 
