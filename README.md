@@ -66,7 +66,7 @@
 - [ ] Testing
 
 ## Features
-- [ ] Tabs
-- [ ] Slider
-- [ ] Timer
-- [ ] Realtime input fields update
+- [x] Tabs
+- [x] Slider
+- [x] Timer
+- [x] Realtime input fields update
