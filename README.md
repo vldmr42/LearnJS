@@ -30,8 +30,8 @@
 - [x] Http requests
 - [x] Local storage
 - [x] Error handling
-- [ ] jQuery
-- [ ] Get and Set
+- [x] jQuery
+- [x] Incapsulation
 - [ ] Modules
 - [ ] Webpack adjustment and project construction
 - [ ] Babel
