@@ -9,6 +9,7 @@ const buttons = document.getElementsByTagName('button');
 const circles = document.getElementsByClassName('circle');
 // console.log(circles);
 
+// Use css queries tag; #id; .class
 const hearts = document.querySelectorAll('.heart');
 console.log(hearts);
 hearts.forEach(item => {

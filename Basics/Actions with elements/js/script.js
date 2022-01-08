@@ -1,5 +1,6 @@
 'use strict';
 
+// Use css queries tag; #id; .class
 const box = document.getElementById('box');
 const btns = document.getElementsByTagName('button');
 const circles = document.getElementsByClassName('circle');
