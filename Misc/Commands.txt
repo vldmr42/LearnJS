@@ -1,0 +1,9 @@
+To start the server:
+sudo /opt/lampp/lampp start
+
+To restart the server:
+sudo /opt/lampp/lampp restart
+
+To stop the server:
+sudo /opt/lampp/lampp stop
+
