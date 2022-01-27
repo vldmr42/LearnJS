@@ -7,3 +7,7 @@ sudo /opt/lampp/lampp restart
 To stop the server:
 sudo /opt/lampp/lampp stop
 
+WIN
+SETTINGS FOR SELF SIGNED SERTIFICATES
+git config --global http.sslVerify false
+npm set strict-ssl false
