@@ -2,6 +2,7 @@
 
 # IDE
 *.code*
+/.idea
 
 # dependencies
 /node_modules

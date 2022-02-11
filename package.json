@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/vldmr42/LearnJS#readme",
   "dependencies": {
-    "axios": "^0.25.0"
+    "@types/faker": "^5.5.9",
+    "axios": "^0.25.0",
+    "faker": "^5.5.3",
+    "parcel-bundler": "^1.12.5",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
   }
 }
