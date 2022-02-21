@@ -2222,7 +2222,54 @@ module.exports.default = axios;
 
 },{"./utils":"../../../node_modules/axios/lib/utils.js","./helpers/bind":"../../../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../../../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../../../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../../../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../../../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../../../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../../../node_modules/axios/lib/cancel/isCancel.js","./env/data":"../../../node_modules/axios/lib/env/data.js","./helpers/spread":"../../../node_modules/axios/lib/helpers/spread.js","./helpers/isAxiosError":"../../../node_modules/axios/lib/helpers/isAxiosError.js"}],"../../../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../../../node_modules/axios/lib/axios.js"}],"src/models/User.ts":[function(require,module,exports) {
+},{"./lib/axios":"../../../node_modules/axios/lib/axios.js"}],"src/models/Eventing.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Eventing = void 0;
+
+var Eventing = /*#__PURE__*/function () {
+  function Eventing() {
+    _classCallCheck(this, Eventing);
+
+    this.events = {};
+  }
+
+  _createClass(Eventing, [{
+    key: "on",
+    value: function on(eventName, callback) {
+      var handlers = this.events[eventName] || [];
+      handlers.push(callback);
+      this.events[eventName] = handlers;
+    }
+  }, {
+    key: "trigger",
+    value: function trigger(eventName) {
+      var handlers = this.events[eventName];
+
+      if (!handlers || handlers.length === 0) {
+        return;
+      }
+
+      handlers.forEach(function (callback) {
+        callback();
+      });
+    }
+  }]);
+
+  return Eventing;
+}();
+
+exports.Eventing = Eventing;
+},{}],"src/models/User.ts":[function(require,module,exports) {
 "use strict";
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2244,12 +2291,14 @@ exports.User = void 0;
 
 var axios_1 = __importDefault(require("axios"));
 
+var Eventing_1 = require("./Eventing");
+
 var User = /*#__PURE__*/function () {
   function User(data) {
     _classCallCheck(this, User);
 
     this.data = data;
-    this.events = {};
+    this.events = new Eventing_1.Eventing();
   }
 
   _createClass(User, [{
@@ -2263,26 +2312,6 @@ var User = /*#__PURE__*/function () {
       Object.assign(this.data, update);
     }
   }, {
-    key: "on",
-    value: function on(eventName, callback) {
-      var handlers = this.events[eventName] || [];
-      handlers.push(callback);
-      this.events[eventName] = handlers;
-    }
-  }, {
-    key: "trigger",
-    value: function trigger(eventName) {
-      var handlers = this.events[eventName];
-
-      if (!handlers || handlers.length === 0) {
-        return;
-      }
-
-      handlers.forEach(function (callback) {
-        callback();
-      });
-    }
-  }, {
     key: "fetch",
     value: function fetch() {
       var _this = this;
@@ -2291,13 +2320,26 @@ var User = /*#__PURE__*/function () {
         _this.set(response.data);
       });
     }
+  }, {
+    key: "save",
+    value: function save() {
+      var id = this.get('id');
+
+      if (this.get('id')) {
+        // put
+        axios_1.default.put("http://localhost:3000/users/".concat(id), this.data);
+      } else {
+        // post
+        axios_1.default.post("http://localhost:3000/users", this.data);
+      }
+    }
   }]);
 
   return User;
 }();
 
 exports.User = User;
-},{"axios":"../../../node_modules/axios/index.js"}],"src/index.ts":[function(require,module,exports) {
+},{"axios":"../../../node_modules/axios/index.js","./Eventing":"src/models/Eventing.ts"}],"src/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2308,9 +2350,13 @@ var User_1 = require("./models/User"); // axios.get('http://localhost:3000/users
 
 
 var user = new User_1.User({
-  id: 1
+  name: 'New Record',
+  age: 0
 });
-user.fetch();
+user.events.on('change', function () {
+  console.log('Change');
+});
+user.events.trigger('change');
 },{"./models/User":"src/models/User.ts"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
